@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L-U-N-E-V | Товар</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        <img src="images/logo1.png" alt="L-U-N-E-V" class="logo-img">
+      </a>
+    </div>
+    <div class="header-right">
+      <nav class="nav">
+        <a href="favorites.html">❤️ Избранное</a>
+        <a href="cart.html">🛒 Корзина</a>
+        <a href="login.html" class="login-link">👤 Войти</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="main-content">
+  <section class="product-page" id="product-page">
+    <!-- Контент подставится через JS -->
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>L-U-N-E-V</h3>
+      <p>Будущее Здесь и Сейчас. Самые современные технологии и гаджеты для вашего комфорта.</p>
+      <div class="social-links">
+        <a href="#"> VK</a>
+        <a href="#"> Telegram</a>
+        <a href="#"> Twitter</a>
+        <a href="#"> YouTube</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Магазин</h4>
+      <ul>
+        <li><a href="product-telephone.html">Смартфоны</a></li>
+        <li><a href="product-consoles.html">Игровые консоли</a></li>
+        <li><a href="product-headphone.html">Наушники</a></li>
+        <li><a href="product-port-consoles.html">Портативные консоли</a></li>
+        <li><a href="product-washmashine.html">Техника для дома</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Помощь</h4>
+      <ul>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Центр поддержки</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Доставка и оплата</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Гарантия и возврат</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Частые вопросы</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Контакты</h4>
+      <div class="contact-info">
+        <p>📧 Email: MR.ANDREW.BRAUNI@mamamia.ru</p>
+        <p>📞 Телефон: +7 (914) 123-4-88</p>
+        <p>🕒 Время работы: 9:00-21:00</p>
+        <p>📍 Адрес: г. Удомля, ул. Космонавтов, 42</p>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Безопасность</h4>
+      <div class="security-badges">
+        <div>🔒 Защита есть - клянусь</div>
+        <div>💳 Безопасная оплата - можно авшорами</div>
+        <div>📦 Гарантия доставки - 2 недели</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 L-U-N-E-V. Будущее Здесь и Сейчас. Все права защищены.</p>
+    <div class="footer-links">
+      <a href="https://avatars.mds.yandex.net/i?id=5958f7da9a5751737dc064ecf01deaf7_l-9220416-images-thumbs&n=13">Политика конфиденциальности</a>
+      <a href="https://i.ytimg.com/vi/NoAg0ucx-DI/hqdefault.jpg">Условия использования</a>
+      <a href="https://i.ytimg.com/vi/gedsONT744o/maxresdefault.jpg">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(async () => {
+  const page = document.getElementById('product-page');
+
+  // Загружаем товары через API
+  let products;
+  try {
+    const res = await fetch('http://localhost:3000/api/products');
+    const data = await res.json();
+    products = data.products;
+  } catch (err) {
+    page.innerHTML = '<p>Не удалось загрузить данные. Попробуйте открыть через сервер.</p>';
+    console.error('Ошибка загрузки JSON:', err);
+    return;
+  }
+
+  // Получаем id товара из URL
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id')) || 1;
+
+  // Находим товар
+  const product = products.find(p => p.id === id);
+  if (!product) {
+    page.innerHTML = '<p>Товар не найден</p>';
+    return;
+  }
+
+  // Создаем безопасные версии массивов
+  const safeImages = Array.isArray(product.images) ? product.images : [product.main_image];
+  const safeMemoryOptions = Array.isArray(product.memory_options) ? product.memory_options : [];
+  const safeDescription = Array.isArray(product.description) ? product.description : ['Описание товара'];
+  const safeDelivery = Array.isArray(product.delivery) ? product.delivery : ['🚚 Доставка — 1-2 дня'];
+
+  // Определяем, нужно ли показывать опции памяти
+  const hasMemoryOptions = safeMemoryOptions.length > 0 && safeMemoryOptions[0] !== "Стандарт";
+
+  // Шаблон страницы товара
+  page.innerHTML = `
+    <div class="product-gallery">
+      <div class="thumbnails">
+        ${safeImages.map(img => `<img src="${img}" class="thumb">`).join('')}
+      </div>
+      <div class="main-image">
+        <img src="${product.main_image}" alt="${product.name}">
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h1>${product.name}</h1>
+      <div class="price">${product.price ? product.price.toLocaleString('ru-RU') : '0'} ₽ <span class="bonus">${product.bonus || ''}</span></div>
+      <div class="actions-buttons">
+        <button class="buy-button">Добавить в корзину</button>
+        <button class="favorite-button" title="Добавить в избранное">❤️</button>
+      </div>
+
+      ${hasMemoryOptions ? `
+        <div class="memory-options">
+          <p>Встроенная память:</p>
+          ${safeMemoryOptions.map(mem => `<button class="memory">${mem}</button>`).join('')}
+        </div>
+      ` : ''}
+
+      <div class="color-options">
+        <p>Цвет: ${product.color_options || 'Не указан'}</p>
+      </div>
+
+      <div class="availability">
+        ${safeDescription.map(desc => `<p>${desc}</p>`).join('')}
+      </div>
+
+      <div class="delivery">
+        ${safeDelivery.map(d => `<p>${d}</p>`).join('')}
+      </div>
+    </div>
+  `;
+
+  // Обработка клика на кнопку "Добавить в корзину"
+  const buyButton = document.querySelector('.buy-button');
+  buyButton.addEventListener('click', async () => {
+    // Получаем текущего пользователя
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    
+    // Если пользователь не авторизован
+    if (!currentUser.id) {
+      alert('Пожалуйста, войдите в аккаунт чтобы добавить товар в корзину');
+      window.location.href = 'login.html';
+      return;
+    }
+    
+    // Получаем выбранный объем памяти (если есть опции)
+    let selectedMemory = null;
+    if (hasMemoryOptions) {
+      const selectedMemoryElement = document.querySelector('.memory.active') || 
+                                   document.querySelector('.memory');
+      selectedMemory = selectedMemoryElement ? selectedMemoryElement.textContent : safeMemoryOptions[0];
+    }
+    
+    console.log('🛒 Добавляем в корзину:', {
+      product: product.name,
+      productId: product.id,
+      selectedMemory: selectedMemory,
+      hasMemoryOptions: hasMemoryOptions
+    });
+    
+    try {
+      // Отправляем запрос на добавление в корзину
+      const response = await fetch('http://localhost:3000/api/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userId: currentUser.id,
+          productId: product.id,
+          quantity: 1,
+          selectedMemory: selectedMemory
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.status === 'success') {
+        buyButton.textContent = 'Добавлено ✅';
+        buyButton.disabled = true;
+        
+        // Показываем уведомление
+        setTimeout(() => {
+          buyButton.textContent = 'Добавить в корзину';
+          buyButton.disabled = false;
+        }, 2000);
+      } else {
+        alert('Ошибка добавления в корзину: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      alert('Ошибка подключения к серверу');
+    }
+  });
+  
+  // Добавление/удаление из избранного
+  const favoriteButton = document.querySelector('.favorite-button');
+  favoriteButton.addEventListener('click', async () => {
+    // Получаем текущего пользователя
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    
+    // Если пользователь не авторизован
+    if (!currentUser.id) {
+      console.log('⚠️ Пользователь не авторизован для добавления в избранное');
+      return;
+    }
+    
+    try {
+      // Проверяем текущий статус
+      const checkResponse = await fetch(`http://localhost:3000/api/favorites/check/${currentUser.id}/${product.id}`);
+      const checkData = await checkResponse.json();
+      
+      if (checkData.status === 'success') {
+        if (checkData.isFavorite) {
+          // Удаляем из избранного
+          const removeResponse = await fetch('http://localhost:3000/api/favorites/remove', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              userId: currentUser.id,
+              productId: product.id
+            })
+          });
+          
+          const removeData = await removeResponse.json();
+          
+          if (removeData.status === 'success') {
+            favoriteButton.textContent = '❤️';
+            favoriteButton.title = 'Добавить в избранное';
+            console.log('💔 Товар удален из избранного');
+          }
+        } else {
+          // Добавляем в избранное
+          const addResponse = await fetch('http://localhost:3000/api/favorites/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              userId: currentUser.id,
+              productId: product.id
+            })
+          });
+          
+          const addData = await addResponse.json();
+          
+          if (addData.status === 'success') {
+            favoriteButton.textContent = '💔';
+            favoriteButton.title = 'Удалить из избранного';
+            console.log('❤️ Товар добавлен в избранное');
+          }
+        }
+      }
+    } catch (error) {
+      console.error('❌ Ошибка избранного:', error);
+    }
+  });
+
+  // Проверяем статус избранного при загрузке страницы
+  async function checkFavoriteStatus() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    
+    if (currentUser.id) {
+      try {
+        const response = await fetch(`http://localhost:3000/api/favorites/check/${currentUser.id}/${product.id}`);
+        const data = await response.json();
+        
+        if (data.status === 'success' && data.isFavorite) {
+          favoriteButton.textContent = '💔';
+          favoriteButton.title = 'Удалить из избранного';
+        }
+      } catch (error) {
+        console.error('Ошибка проверки избранного:', error);
+      }
+    }
+  }
+
+  // Вызываем проверку статуса
+  checkFavoriteStatus();
+
+  // Обработчики для выбора памяти (только если есть опции)
+  if (hasMemoryOptions) {
+    const memoryButtons = document.querySelectorAll('.memory');
+    memoryButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        memoryButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Активируем первую опцию памяти по умолчанию
+    if (memoryButtons.length > 0) {
+      memoryButtons[0].classList.add('active');
+    }
+  }
+
+})();
+</script>
+<script src="js/header.js"></script>
+<script>
+// Функция для показа футера при прокрутке
+function initFooterVisibility() {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  
+  let footerShown = false;
+
+  function checkFooterVisibility() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Показываем футер когда пользователь прокрутил до нижней части страницы
+    if (scrollPosition >= documentHeight - 100 && !footerShown) {
+      footer.classList.add('visible', 'slide-up ');
+      footerShown = true;
+    } else if (scrollPosition < documentHeight - 300 && footerShown) {
+      footer.classList.remove('visible', 'slide-up');
+      footerShown = false;
+    }
+  }
+
+  window.addEventListener('scroll', checkFooterVisibility);
+  window.addEventListener('resize', checkFooterVisibility);
+  
+  // Проверяем при загрузке
+  setTimeout(checkFooterVisibility, 100);
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', initFooterVisibility);
+</script>
+</body>
+</html>

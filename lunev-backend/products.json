@@ -1,0 +1,646 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 14 Pro",
+    "price": 99990,
+    "bonus": "+10 000 бонусов",
+    "main_image": "products/buy/telephone/iphone/1.jpg",
+    "images": [
+      "products/buy/telephone/iphone/2.jpg",
+      "products/buy/telephone/iphone/3.jpg",
+      "products/buy/telephone/iphone/4.jpg"
+    ],
+    "memory_options": ["128 ГБ", "256 ГБ", "512 ГБ", "1 ТБ"],
+    "color_options": "Темно-фиолетовый",
+    "description": [
+      "Динамический остров: новый способ взаимодействия",
+      "Always-On дисплей: информация всегда под рукой",
+      "Камера 48 МП: профессиональные фото и видео"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (690 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Samsung Galaxy S25 Ultra",
+    "price": 89990,
+    "bonus": "+8 000 бонусов",
+    "main_image": "products/buy/telephone/samsung/1.jpg",
+    "images": [
+      "products/buy/telephone/samsung/2.jpg",
+      "products/buy/telephone/samsung/3.jpg",
+      "products/buy/telephone/samsung/4.jpg"
+    ],
+    "memory_options": ["256 ГБ", "512 ГБ", "1 ТБ"],
+    "color_options": "Черный",
+    "description": [
+      "S-Pen в комплекте: записи и рисунки",
+      "Камера 200 МП: невероятная детализация",
+      "Батарея 5000 мАч: работа весь день"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (650 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Xiaomi 13 Pro",
+    "price": 79990,
+    "bonus": "+7 000 бонусов",
+    "main_image": "products/buy/telephone/xiomi/1.jpg",
+    "images": [
+      "products/buy/telephone/xiomi/2.jpg",
+      "products/buy/telephone/xiomi/3.jpg",
+      "products/buy/telephone/xiomi/4.jpg"
+    ],
+    "memory_options": ["256 ГБ", "512 ГБ"],
+    "color_options": "Зеленый",
+    "description": [
+      "Камера Leica: профессиональное качество",
+      "Процессор Snapdragon 8 Gen 2: высокая производительность",
+      "Быстрая зарядка 120 Вт: 100% за 19 минут"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (700 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Google Pixel 10 5G",
+    "price": 74990,
+    "bonus": "+6 000 бонусов",
+    "main_image": "products/buy/telephone/google/1.jpg",
+    "images": [
+      "products/buy/telephone/google/2.jpg",
+      "products/buy/telephone/google/3.jpg",
+      "products/buy/telephone/google/4.jpg"
+    ],
+    "memory_options": ["128 ГБ", "256 ГБ"],
+    "color_options": "Белый",
+    "description": [
+      "Tensor G3: ИИ для фото и видео",
+      "Чистый Android: без предустановленного ПО",
+      "Magic Eraser: удаление объектов с фото"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (600 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "OnePlus 11",
+    "price": 64990,
+    "bonus": "+5 000 бонусов",
+    "main_image": "products/buy/telephone/oneplus/1.jpg",
+    "images": [
+      "products/buy/telephone/oneplus/2.jpg",
+      "products/buy/telephone/oneplus/3.jpg",
+      "products/buy/telephone/oneplus/4.jpg"
+    ],
+    "memory_options": ["128 ГБ", "256 ГБ"],
+    "color_options": "Черный",
+    "description": [
+      "OxygenOS: плавная и быстрая работа",
+      "Зарядка 100 Вт: полный заряд за 25 минут",
+      "Hasselblad камера: естественные цвета"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (550 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "PlayStation 5",
+    "price": 59990,
+    "bonus": "+12 000 бонусов",
+    "main_image": "products/buy/consoles/playstation/1.jpg",
+    "images": [
+      "products/buy/consoles/playstation/2.jpg",
+      "products/buy/consoles/playstation/3.jpg",
+      "products/buy/consoles/playstation/4.jpg"
+    ],
+    "memory_options": ["825 ГБ SSD"],
+    "color_options": "Белый",
+    "description": [
+      "Тактовая частота GPU: 2.23 ГГц",
+      "Поддержка 4K 120fps: плавный геймплей",
+      "DualSense: тактильная отдача"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (890 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "PlayStation 3",
+    "price": 15990,
+    "bonus": "+1 500 бонусов",
+    "main_image": "products/buy/consoles/ps3/1.jpg",
+    "images": [
+      "products/buy/consoles/ps3/2.jpg",
+      "products/buy/consoles/ps3/3.jpg",
+      "products/buy/consoles/ps3/4.jpg"
+    ],
+    "memory_options": ["120 ГБ HDD", "250 ГБ HDD"],
+    "color_options": "Черный",
+    "description": [
+      "Cell Processor: 3.2 ГГц",
+      "Blu-ray привод: фильмы и игры",
+      "Backward compatibility: играйте в PS2 игры"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (490 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Xbox Series X",
+    "price": 54990,
+    "bonus": "+10 000 бонусов",
+    "main_image": "products/buy/consoles/xbox/1.jpg",
+    "images": [
+      "products/buy/consoles/xbox/2.jpg",
+      "products/buy/consoles/xbox/3.jpg",
+      "products/buy/consoles/xbox/4.jpg"
+    ],
+    "memory_options": ["1 ТБ SSD"],
+    "color_options": "Черный",
+    "description": [
+      "12 ТФлопс: мощность для 4K игр",
+      "Quick Resume: мгновенное переключение",
+      "Game Pass: сотни игр по подписке"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (850 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Xbox Series S",
+    "price": 34990,
+    "bonus": "+6 000 бонусов",
+    "main_image": "products/buy/consoles/xboxs/1.jpg",
+    "images": [
+      "products/buy/consoles/xboxs/2.jpg",
+      "products/buy/consoles/xboxs/3.jpg",
+      "products/buy/consoles/xboxs/4.jpg"
+    ],
+    "memory_options": ["512 ГБ SSD"],
+    "color_options": "Белый",
+    "description": [
+      "4 ТФлопс: игры в 1440p",
+      "Самая компактная Xbox",
+      "All Digital: только цифровые игры"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (650 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "PS5 Digital Edition",
+    "price": 49990,
+    "bonus": "+9 000 бонусов",
+    "main_image": "products/buy/consoles/ps5/1.jpg",
+    "images": [
+      "products/buy/consoles/ps5/2.jpg",
+      "products/buy/consoles/ps5/3.jpg",
+      "products/buy/consoles/ps5/4.jpg"
+    ],
+    "memory_options": ["825 ГБ SSD"],
+    "color_options": "Белый",
+    "description": [
+      "Только цифровые игры: экономия на дисках",
+      "4K Blu-ray: нет привода",
+      "Такая же мощность: как у стандартной PS5"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (790 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Apple AirPods Pro 3",
+    "price": 24990,
+    "bonus": "+2 500 бонусов",
+    "main_image": "products/buy/headphones/airpods3/4.jpg",
+    "images": [
+      "products/buy/headphones/airpods3/2.jpg",
+      "products/buy/headphones/airpods3/3.jpg",
+      "products/buy/headphones/airpods3/1.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Белый",
+    "description": [
+      "Активное шумоподавление: полное погружение",
+      "Пространственное аудио: эффект присутствия",
+      "До 30 часов: с кейсом для зарядки"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (450 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Sony WH-1000XM5",
+    "price": 29990,
+    "bonus": "+3 000 бонусов",
+    "main_image": "products/buy/headphones/sony/1.jpg",
+    "images": [
+      "products/buy/headphones/sony/2.jpg",
+      "products/buy/headphones/sony/3.jpg",
+      "products/buy/headphones/sony/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Черный",
+    "description": [
+      "Лучшее шумоподавление: до -30 дБ",
+      "30 часов работы: без подзарядки",
+      "Качество звука: Hi-Res Audio"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (500 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Samsung Galaxy Buds3 Pro",
+    "price": 19990,
+    "bonus": "+2 000 бонусов",
+    "main_image": "products/buy/headphones/samsung/1.jpg",
+    "images": [
+      "products/buy/headphones/samsung/2.jpg",
+      "products/buy/headphones/samsung/3.jpg",
+      "products/buy/headphones/samsung/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Черный",
+    "description": [
+      "360 Audio: объемный звук",
+      "ANC: активное шумоподавление",
+      "IPX7: защита от воды и пота"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (400 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "JBL Tune 770NC",
+    "price": 8990,
+    "bonus": "+900 бонусов",
+    "main_image": "products/buy/headphones/jbl/1.jpg",
+    "images": [
+      "products/buy/headphones/jbl/2.jpg",
+      "products/buy/headphones/jbl/3.jpg",
+      "products/buy/headphones/jbl/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Синий",
+    "description": [
+      "Pure Bass: мощные низкие частоты",
+      "До 44 часов: с шумоподавлением",
+      "Складная конструкция: удобно брать с собой"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (350 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Marshall Major V",
+    "price": 12990,
+    "bonus": "+1 300 бонусов",
+    "main_image": "products/buy/headphones/marshal/1.jpg",
+    "images": [
+      "products/buy/headphones/marshal/2.jpg",
+      "products/buy/headphones/marshal/3.jpg",
+      "products/buy/headphones/marshal/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Черный",
+    "description": [
+      "Классический дизайн: винтажный стиль",
+      "Беспроводные: до 100 часов работы",
+      "Качество Marshall: узнаваемый звук"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (420 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "MacBook Pro 16",
+    "price": 249990,
+    "bonus": "+25 000 бонусов",
+    "main_image": "products/buy/notebook/1.jpg",
+    "images": [
+      "products/buy/notebook/2.jpg",
+      "products/buy/notebook/3.jpg",
+      "products/buy/notebook/4.jpg"
+    ],
+    "memory_options": ["1 ТБ", "2 ТБ", "4 ТБ"],
+    "color_options": "Серый космос",
+    "description": [
+      "M3 Pro/Max: экстремальная производительность",
+      "Liquid Retina XDR: невероятная цветопередача",
+      "До 22 часов: автономной работы"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (1200 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Polaroid Now Gen 2.0",
+    "price": 8990,
+    "bonus": "+900 бонусов",
+    "main_image": "products/buy/poloroid/1.jpg",
+    "images": [
+      "products/buy/poloroid/2.jpg",
+      "products/buy/poloroid/3.jpg",
+      "products/buy/poloroid/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Синий",
+    "description": [
+      "Мгновенные фото: за 60 секунд",
+      "Автофокус: четкие снимки",
+      "Встроенная вспышка: для любых условий"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (300 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Apple Watch Ultra 2",
+    "price": 59990,
+    "bonus": "+6 000 бонусов",
+    "main_image": "products/buy/watches/1.jpg",
+    "images": [
+      "products/buy/watches/2.jpg",
+      "products/buy/watches/3.jpg",
+      "products/buy/watches/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Титан",
+    "description": [
+      "До 36 часов: автономной работы",
+      "Экстренный вызов: спутниковая связь",
+      "Depth App: для дайвинга до 40 метров"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (600 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Nintendo Switch 2.0",
+    "price": 34990,
+    "bonus": "+3 500 бонусов",
+    "main_image": "products/buy/port-consoles/switch/1.jpg",
+    "images": [
+      "products/buy/port-consoles/switch/2.jpg",
+      "products/buy/port-consoles/switch/3.jpg",
+      "products/buy/port-consoles/switch/4.jpg"
+    ],
+    "memory_options": ["64 ГБ"],
+    "color_options": "Неон",
+    "description": [
+      "OLED экран 7 дюймов: яркие цвета",
+      "Гибридный дизайн: TV и портативный режим",
+      "Joy-Con контроллеры: новые возможности"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (550 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Samsung OLED TV",
+    "price": 199990,
+    "bonus": "+20 000 бонусов",
+    "main_image": "products/buy/TV/1.jpg",
+    "images": [
+      "products/buy/TV/2.jpg",
+      "products/buy/TV/3.jpg",
+      "products/buy/TV/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Черный",
+    "description": [
+      "OLED 4K: идеальный черный цвет",
+      "Quantum Processor: AI апскейлинг",
+      "Smart TV: Tizen OS с голосовым управлением"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (1500 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "ASUS ROG Ally",
+    "price": 59990,
+    "bonus": "+6 000 бонусов",
+    "main_image": "products/buy/port-consoles/asus/1.jpg",
+    "images": [
+      "products/buy/port-consoles/asus/2.jpg",
+      "products/buy/port-consoles/asus/3.jpg",
+      "products/buy/port-consoles/asus/4.jpg"
+    ],
+    "memory_options": ["512 ГБ SSD", "1 ТБ SSD"],
+    "color_options": "Белый",
+    "description": [
+      "AMD Ryzen Z1: для AAA игр",
+      "120 Гц экран: плавный геймплей",
+      "Windows 11: полная ПК функциональность"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (750 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "PlayStation Portal",
+    "price": 19990,
+    "bonus": "+2 000 бонусов",
+    "main_image": "products/buy/port-consoles/sony/1.jpg",
+    "images": [
+      "products/buy/port-consoles/sony/2.jpg",
+      "products/buy/port-consoles/sony/3.jpg",
+      "products/buy/port-consoles/sony/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Белый",
+    "description": [
+      "Удаленная игра: с вашей PS5",
+      "8-дюймовый LCD: Full HD качество",
+      "DualSense: тактильная отдача"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (450 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "AYANEO 2S",
+    "price": 79990,
+    "bonus": "+8 000 бонусов",
+    "main_image": "products/buy/port-consoles/AYA/1.jpg",
+    "images": [
+      "products/buy/port-consoles/AYA/2.jpg",
+      "products/buy/port-consoles/AYA/3.jpg",
+      "products/buy/port-consoles/AYA/4.jpg"
+    ],
+    "memory_options": ["1 ТБ SSD", "2 ТБ SSD"],
+    "color_options": "Черный",
+    "description": [
+      "AMD Ryzen 7 7840U: высокая производительность",
+      "7-дюймовый IPS: 1200p разрешение",
+      "Хаптик-отдача: иммерсивный опыт"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (850 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Samsung WW90T634DLH",
+    "price": 64990,
+    "bonus": "+6 500 бонусов",
+    "main_image": "products/buy/wash/samsung/1.jpg",
+    "images": [
+      "products/buy/wash/samsung/2.jpg",
+      "products/buy/wash/samsung/3.jpg",
+      "products/buy/wash/samsung/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Белый",
+    "description": [
+      "Загрузка 9 кг: для большой семьи",
+      "Eco Bubble: эффективная стирка",
+      "AddWash: доложить вещи во время стирки"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (900 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "LG F4V310WSB",
+    "price": 71990,
+    "bonus": "+7 200 бонусов",
+    "main_image": "products/buy/wash/lg/1.jpg",
+    "images": [
+      "products/buy/wash/lg/2.jpg",
+      "products/buy/wash/lg/3.jpg",
+      "products/buy/wash/lg/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Серебристый",
+    "description": [
+      "Загрузка 10.5 кг: максимальная вместимость",
+      "Direct Drive: тихая работа",
+      "Технология пара: гигиеничная стирка"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (950 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Bosch WAU28P91",
+    "price": 57990,
+    "bonus": "+5 800 бонусов",
+    "main_image": "products/buy/wash/bosh/1.jpg",
+    "images": [
+      "products/buy/wash/bosh/2.jpg",
+      "products/buy/wash/bosh/3.jpg",
+      "products/buy/wash/bosh/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Белый",
+    "description": [
+      "Heat Pump: экономия энергии",
+      "A+++ класс: самый экономичный",
+      "AntiVibration: устойчивость при отжиме"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (800 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Indesit IWSC 51051",
+    "price": 24990,
+    "bonus": "+2 500 бонусов",
+    "main_image": "products/buy/wash/indesit/1.jpg",
+    "images": [
+      "products/buy/wash/indesit/2.jpg",
+      "products/buy/wash/indesit/3.jpg",
+      "products/buy/wash/indesit/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Белый",
+    "description": [
+      "Узкий корпус: для маленькой ванной",
+      "Загрузка 5 кг: для небольшой семьи",
+      "Экономичный: низкое энергопотребление"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (600 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Electrolux EW6S4R06W",
+    "price": 41990,
+    "bonus": "+4 200 бонусов",
+    "main_image": "products/buy/wash/elec/1.jpg",
+    "images": [
+      "products/buy/wash/elec/2.jpg",
+      "products/buy/wash/elec/3.jpg",
+      "products/buy/wash/elec/4.jpg"
+    ],
+    "memory_options": ["Стандарт"],
+    "color_options": "Белый",
+    "description": [
+      "SteamCare: удаление аллергенов",
+      "Загрузка 8 кг: оптимальный объем",
+      "Защита от детей: блокировка панели"
+    ],
+    "delivery": [
+      "🚚 Доставка — Послезавтра (700 ₽)",
+      "🏪 Самовывоз — Завтра в магазине (Бесплатно)"
+    ]
+  }
+]

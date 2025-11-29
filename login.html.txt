@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Войти | L-U-N-E-V</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        <img src="images/logo1.png" alt="L-U-N-E-V" class="logo-img">
+      </a>
+    </div>
+    <div class="header-right">
+      <nav class="nav" id="header-nav">
+        <a href="favorites.html">❤️ Избранное</a>
+        <a href="cart.html">🛒 Корзина</a>
+        <a href="login.html" id="login-link">👤 Войти</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="auth-container">
+  <h2>Войти в аккаунт</h2>
+  <form id="login-form" class="auth-form">
+    <div class="form-group">
+      <input type="email" placeholder="Ваш email" id="email" required>
+      <div class="form-error" id="emailError"></div>
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="Ваш пароль" id="password" required>
+      <div class="form-error" id="passwordError"></div>
+    </div>
+    <button type="submit" class="auth-button" id="submitBtn">
+      <span class="btn-text">Войти</span>
+      <span class="btn-loading">Вход...</span>
+    </button>
+  </form>
+  <p class="auth-link">Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>L-U-N-E-V</h3>
+      <p>Будущее Здесь и Сейчас. Самые современные технологии и гаджеты для вашего комфорта.</p>
+      <div class="social-links">
+        <a href="#">📘 VK</a>
+        <a href="#">📷 Instagram</a>
+        <a href="#">🐦 Twitter</a>
+        <a href="#">📹 YouTube</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Магазин</h4>
+      <ul>
+        <li><a href="product-telephone.html">Смартфоны</a></li>
+        <li><a href="product-consoles.html">Игровые консоли</a></li>
+        <li><a href="product-headphone.html">Наушники</a></li>
+        <li><a href="product-port-consoles.html">Портативные консоли</a></li>
+        <li><a href="product-washmashine.html">Техника для дома</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Помощь</h4>
+      <ul>
+        <li><a href="help.html">Центр поддержки</a></li>
+        <li><a href="delivery.html">Доставка и оплата</a></li>
+        <li><a href="warranty.html">Гарантия и возврат</a></li>
+        <li><a href="faq.html">Частые вопросы</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Контакты</h4>
+      <div class="contact-info">
+        <p>📧 Email: MR.ANDREW.BRAUNI@mamamia.ru</p>
+        <p>📞 Телефон: +7 (914) 123-4-88</p>
+        <p>🕒 Время работы: 9:00-21:00</p>
+        <p>📍 Адрес: г. Москва, ул. Технологическая, 42</p>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Безопасность</h4>
+      <div class="security-badges">
+        <div>🔒 SSL защита</div>
+        <div>💳 Безопасная оплата</div>
+        <div>📦 Гарантия доставки</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 L-U-N-E-V. Будущее Здесь и Сейчас. Все права защищены.</p>
+    <div class="footer-links">
+      <a href="privacy.html">Политика конфиденциальности</a>
+      <a href="terms.html">Условия использования</a>
+      <a href="cookies.html">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Система уведомлений
+function showNotification(message, type = 'error') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => notification.classList.add('show'), 100);
+  
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 5000);
+}
+
+// Показать ошибку поля
+function showFieldError(fieldId, message) {
+  const field = document.getElementById(fieldId);
+  const errorElement = document.getElementById(fieldId + 'Error');
+  
+  if (field && errorElement) {
+    field.classList.add('error');
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+  }
+}
+
+// Скрыть ошибку поля
+function hideFieldError(fieldId) {
+  const field = document.getElementById(fieldId);
+  const errorElement = document.getElementById(fieldId + 'Error');
+  
+  if (field && errorElement) {
+    field.classList.remove('error');
+    errorElement.style.display = 'none';
+  }
+}
+
+// Показать загрузку
+function showLoading() {
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const btnLoading = submitBtn.querySelector('.btn-loading');
+  
+  submitBtn.disabled = true;
+  btnText.style.display = 'none';
+  btnLoading.style.display = 'inline';
+}
+
+// Скрыть загрузку
+function hideLoading() {
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const btnLoading = submitBtn.querySelector('.btn-loading');
+  
+  submitBtn.disabled = false;
+  btnText.style.display = 'inline';
+  btnLoading.style.display = 'none';
+}
+
+// Проверяем, не авторизован ли уже пользователь
+if (localStorage.getItem('loggedIn') === 'true') {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+  showNotification(`Вы уже вошли как ${currentUser.firstName || currentUser.email}`, 'warning');
+  setTimeout(() => {
+    window.location.href = 'profile.html';
+  }, 2000);
+}
+
+// Обработка входа
+document.getElementById('login-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  
+  // Очищаем предыдущие ошибки
+  hideFieldError('email');
+  hideFieldError('password');
+  
+  let isValid = true;
+  
+  if (!email) {
+    showFieldError('email', 'Пожалуйста, введите email');
+    isValid = false;
+  } else if (!/\S+@\S+\.\S+/.test(email)) {
+    showFieldError('email', 'Пожалуйста, введите корректный email');
+    isValid = false;
+  }
+  
+  if (!password) {
+    showFieldError('password', 'Пожалуйста, введите пароль');
+    isValid = false;
+  }
+  
+  if (!isValid) return;
+  
+  showLoading();
+  
+  try {
+    const response = await fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      // Сохраняем данные пользователя
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('currentUser', JSON.stringify(data.user));
+      
+      showNotification(`Добро пожаловать, ${data.user.firstName}!`, 'success');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+    } else {
+      showNotification(data.error || 'Ошибка при входе');
+    }
+  } catch (error) {
+    showNotification('Ошибка подключения к серверу');
+    console.error('Ошибка:', error);
+  } finally {
+    hideLoading();
+  }
+});
+
+// Скрываем ошибки при вводе
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', function() {
+    hideFieldError(this.id);
+  });
+});
+
+// Функция для показа футера при прокрутке
+function initFooterVisibility() {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  
+  let footerShown = false;
+
+  function checkFooterVisibility() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Показываем футер когда пользователь прокрутил до нижней части страницы
+    if (scrollPosition >= documentHeight - 100 && !footerShown) {
+      footer.classList.add('visible', 'slide-up');
+      footerShown = true;
+    } else if (scrollPosition < documentHeight - 300 && footerShown) {
+      footer.classList.remove('visible', 'slide-up');
+      footerShown = false;
+    }
+  }
+
+  window.addEventListener('scroll', checkFooterVisibility);
+  window.addEventListener('resize', checkFooterVisibility);
+  
+  // Проверяем при загрузке
+  setTimeout(checkFooterVisibility, 100);
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', initFooterVisibility);
+</script>
+</body>
+</html>

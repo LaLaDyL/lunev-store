@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Войти | L-U-N-E-V</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+  .login-container {
+    max-width: 420px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  .login-container h2 { color: var(--accent-dark); margin-bottom: 20px; }
+  .login-container input { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; }
+  .login-container button { width: 100%; padding: 12px; border-radius: 8px; border: none; background: var(--accent-dark); color: #fff; font-size: 16px; cursor: pointer; }
+  .login-container button:hover { background: var(--accent); }
+  .login-container p { margin-top: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo"><a href="index.html">L-U-N-E-V</a></div>
+  <div class="header-right">
+    <div class="search-bar"><input type="text" placeholder="Поиск..."></div>
+    <nav class="nav">
+      <a href="favorites.html">★ Избранное</a>
+      <a href="cart.html">🛒 Корзина</a>
+      <a href="login.html" class="active">👤 Войти</a>
+    </nav>
+  </div>
+</header>
+
+<div class="login-container">
+  <h2>Войти в аккаунт</h2>
+  <form>
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Пароль" required>
+    <button type="submit">Войти</button>
+  </form>
+  <p>Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+</div>
+
+<footer class="footer">
+  <p>© 2025 L-U-N-E-V. Все права защищены.</p>
+  <div class="footer-contacts">
+    <p><strong>Контакты:</strong></p>
+    <p>Email: <a href="mailto:support@lunevshop.ru">support@lunevshop.ru</a></p>
+    <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

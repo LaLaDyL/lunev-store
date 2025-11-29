@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Избранное | L-U-N-E-V</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo"><a href="index.html">L-U-N-E-V</a></div>
+  <div class="header-right">
+    <div class="search-bar"><input type="text" placeholder="Поиск..."></div>
+    <nav class="nav">
+      <a href="favorites.html" class="active">★ Избранное</a>
+      <a href="cart.html">🛒 Корзина</a>
+      <a href="login.html">👤 Войти</a>
+    </nav>
+  </div>
+</header>
+
+<section class="products">
+  <h2>Ваши избранные товары</h2>
+  <div class="product-list">
+    <div class="product-card"><img src="https://via.placeholder.com/250x300?text=iPhone+14" alt="iPhone 14"><h3>iPhone 14</h3><p class="price">75 000 ₽</p></div>
+    <div class="product-card"><img src="https://via.placeholder.com/250x300?text=MacBook+Pro" alt="MacBook Pro"><h3>MacBook Pro</h3><p class="price">180 000 ₽</p></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2025 L-U-N-E-V. Все права защищены.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+const express = require('express');
+const { query } = require('./config/database');
+
+const app = express();
+app.use(express.json());
+
+// Разрешаем CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
+
+// Главная страница
+app.get('/', (req, res) => {
+  res.json({ 
+    message: '✅ L-U-N-E-V Backend работает!',
+    version: '1.0.0',
+    endpoints: {
+      products: 'GET /api/products',
+      product_by_id: 'GET /api/products/1',
+      register: 'POST /api/register',
+      login: 'POST /api/login'
+    }
+  });
+});
+
+// Тест базы данных
+app.get('/test', async (req, res) => {
+  try {
+    const result = await query('SELECT NOW() as time');
+    res.json({ 
+      status: '✅ Сервер и база данных работают!',
+      time: result.rows[0].time
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      status: '❌ Ошибка базы данных',
+      error: error.message 
+    });
+  }
+});
+
+// Получить все товары
+app.get('/api/products', async (req, res) => {
+  try {
+    const result = await query('SELECT * FROM products');
+    res.json({
+      status: 'success',
+      count: result.rows.length,
+      products: result.rows
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Получить товар по ID
+app.get('/api/products/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await query('SELECT * FROM products WHERE id = $1', [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Товар не найден' });
+    }
+    
+    res.json({
+      status: 'success',
+      product: result.rows[0]
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Регистрация (упрощенная)
+app.post('/api/register', async (req, res) => {
+  try {
+    const { email, password, firstName, lastName, phone } = req.body;
+    
+    console.log('Регистрация:', { email, firstName, lastName });
+    
+    // Проверяем есть ли пользователь
+    const userExists = await query('SELECT * FROM users WHERE email = $1', [email]);
+    if (userExists.rows.length > 0) {
+      return res.status(400).json({ error: 'Пользователь уже существует' });
+    }
+    
+    // Создаем пользователя (пароль без шифрования)
+    const result = await query(
+      'INSERT INTO users (email, password, first_name, last_name, phone) VALUES ($1, $2, $3, $4, $5) RETURNING id, email, first_name, last_name',
+      [email, password, firstName, lastName, phone]
+    );
+    
+    res.json({
+      status: 'success',
+      message: 'Пользователь создан',
+      user: result.rows[0]
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Вход (упрощенный)
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    
+    console.log('Вход:', { email });
+    
+    const result = await query(
+      'SELECT id, email, first_name, last_name FROM users WHERE email = $1 AND password = $2',
+      [email, password]
+    );
+    
+    if (result.rows.length === 0) {
+      return res.status(400).json({ error: 'Неверный email или пароль' });
+    }
+    
+    res.json({
+      status: 'success',
+      message: 'Вход выполнен',
+      user: result.rows[0]
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log('🚀 ==================================');
+  console.log('🚀 Сервер L-U-N-E-V запущен!');
+  console.log(`🚀 Адрес: http://localhost:${PORT}`);
+  console.log('🚀 ==================================');
+  console.log('📊 Тест базы: http://localhost:3000/test');
+  console.log('🛍️ Товары: http://localhost:3000/api/products');
+  console.log('🔐 Регистрация: POST http://localhost:3000/api/register');
+  console.log('🔐 Вход: POST http://localhost:3000/api/login');
+});
+
+// ================== КОРЗИНА ==================
+
+// Получить корзину пользователя
+app.get('/api/cart/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const result = await query(`
+      SELECT c.*, p.name, p.price, p.image_url 
+      FROM cart c 
+      JOIN products p ON c.product_id = p.id 
+      WHERE c.user_id = $1
+    `, [userId]);
+    
+    res.json({
+      status: 'success',
+      cart: result.rows
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Добавить товар в корзину
+app.post('/api/cart/add', async (req, res) => {
+  try {
+    const { userId, productId, quantity = 1, selectedMemory } = req.body;
+    
+    console.log('📦 Добавление в корзину:', { userId, productId, quantity, selectedMemory });
+    
+    // Проверяем есть ли уже товар в корзине
+    const existingItem = await query(
+      'SELECT * FROM cart WHERE user_id = $1 AND product_id = $2 AND selected_memory = $3',
+      [userId, productId, selectedMemory || '']
+    );
+    
+    if (existingItem.rows.length > 0) {
+      // Обновляем количество
+      await query(
+        'UPDATE cart SET quantity = quantity + $1 WHERE user_id = $2 AND product_id = $3 AND selected_memory = $4',
+        [quantity, userId, productId, selectedMemory || '']
+      );
+      console.log('✅ Количество обновлено');
+    } else {
+      // Добавляем новый товар
+      await query(
+        'INSERT INTO cart (user_id, product_id, quantity, selected_memory) VALUES ($1, $2, $3, $4)',
+        [userId, productId, quantity, selectedMemory || '']
+      );
+      console.log('✅ Товар добавлен');
+    }
+    
+    res.json({
+      status: 'success',
+      message: 'Товар добавлен в корзину'
+    });
+  } catch (error) {
+    console.log('❌ Ошибка:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Обновить количество товара в корзине
+app.put('/api/cart/update', async (req, res) => {
+  try {
+    const { userId, productId, quantity, selectedMemory } = req.body;
+    
+    console.log('🔄 Обновление корзины:', { userId, productId, quantity, selectedMemory });
+    
+    if (quantity <= 0) {
+      // Удаляем товар если количество 0
+      await query(
+        'DELETE FROM cart WHERE user_id = $1 AND product_id = $2 AND selected_memory = $3',
+        [userId, productId, selectedMemory || '']
+      );
+      console.log('🗑️ Товар удален из корзины');
+    } else {
+      // Обновляем количество
+      await query(
+        'UPDATE cart SET quantity = $1 WHERE user_id = $2 AND product_id = $3 AND selected_memory = $4',
+        [quantity, userId, productId, selectedMemory || '']
+      );
+      console.log('✅ Количество обновлено:', quantity);
+    }
+    
+    res.json({
+      status: 'success',
+      message: 'Корзина обновлена'
+    });
+  } catch (error) {
+    console.log('❌ Ошибка обновления корзины:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Удалить товар из корзины
+app.delete('/api/cart/remove', async (req, res) => {
+  try {
+    const { userId, productId, selectedMemory } = req.body;
+    
+    console.log('🗑️ Удаление из корзины:', { userId, productId, selectedMemory });
+    
+    await query(
+      'DELETE FROM cart WHERE user_id = $1 AND product_id = $2 AND selected_memory = $3',
+      [userId, productId, selectedMemory || '']
+    );
+    
+    console.log('✅ Товар удален');
+    
+    res.json({
+      status: 'success',
+      message: 'Товар удален из корзины'
+    });
+  } catch (error) {
+    console.log('❌ Ошибка удаления:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ================== ИЗБРАННОЕ ==================
+
+// Получить избранное пользователя
+app.get('/api/favorites/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const result = await query(`
+      SELECT f.*, p.name, p.price, p.image_url 
+      FROM favorites f 
+      JOIN products p ON f.product_id = p.id 
+      WHERE f.user_id = $1
+    `, [userId]);
+    
+    res.json({
+      status: 'success',
+      favorites: result.rows
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Добавить товар в избранное
+app.post('/api/favorites/add', async (req, res) => {
+  try {
+    const { userId, productId } = req.body;
+    
+    console.log('❤️ Добавление в избранное:', { userId, productId });
+    
+    // Проверяем есть ли уже товар в избранном
+    const existingItem = await query(
+      'SELECT * FROM favorites WHERE user_id = $1 AND product_id = $2',
+      [userId, productId]
+    );
+    
+    if (existingItem.rows.length > 0) {
+      res.json({
+        status: 'success',
+        message: 'Товар уже в избранном'
+      });
+    } else {
+      // Добавляем новый товар
+      await query(
+        'INSERT INTO favorites (user_id, product_id) VALUES ($1, $2)',
+        [userId, productId]
+      );
+      console.log('✅ Товар добавлен в избранное');
+      
+      res.json({
+        status: 'success',
+        message: 'Товар добавлен в избранное'
+      });
+    }
+  } catch (error) {
+    console.log('❌ Ошибка:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Удалить товар из избранного
+app.delete('/api/favorites/remove', async (req, res) => {
+  try {
+    const { userId, productId } = req.body;
+    
+    console.log('💔 Удаление из избранного:', { userId, productId });
+    
+    await query(
+      'DELETE FROM favorites WHERE user_id = $1 AND product_id = $2',
+      [userId, productId]
+    );
+    
+    console.log('✅ Товар удален из избранного');
+    
+    res.json({
+      status: 'success',
+      message: 'Товар удален из избранного'
+    });
+  } catch (error) {
+    console.log('❌ Ошибка удаления:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Проверить, есть ли товар в избранном
+app.get('/api/favorites/check/:userId/:productId', async (req, res) => {
+  try {
+    const { userId, productId } = req.params;
+    
+    const result = await query(
+      'SELECT * FROM favorites WHERE user_id = $1 AND product_id = $2',
+      [userId, productId]
+    );
+    
+    res.json({
+      status: 'success',
+      isFavorite: result.rows.length > 0
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});

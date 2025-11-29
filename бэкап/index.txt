@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L-U-N-E-V | Главная</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo"><a href="index.html">L-U-N-E-V</a></div>
+    <div class="header-right">
+      <div class="search-bar"><input type="text" placeholder="Поиск..."></div>
+      <nav class="nav">
+        <a href="favorites.html">Избранное</a>
+        <a href="cart.html">Корзина</a>
+        <a href="login.html">Войти</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- VIDEO SLIDER -->
+  <div class="video-slider">
+    <input type="radio" name="slider" id="s1" checked>
+    <input type="radio" name="slider" id="s2">
+    <input type="radio" name="slider" id="s3">
+    <input type="radio" name="slider" id="s4">
+    <input type="radio" name="slider" id="s5">
+
+    <div class="slides">
+      <div class="slide"><video src="videos/promo1.mp4" autoplay muted loop></video></div>
+      <div class="slide"><video src="videos/promo2.mp4" autoplay muted loop></video></div>
+      <div class="slide"><video src="videos/promo3.mp4" autoplay muted loop></video></div>
+      <div class="slide"><video src="videos/promo4.mp4" autoplay muted loop></video></div>
+      <div class="slide"><video src="videos/promo6.mp4" autoplay muted loop></video></div>
+    </div>
+
+    <div class="dots">
+      <label for="s1"></label>
+      <label for="s2"></label>
+      <label for="s3"></label>
+      <label for="s4"></label>
+      <label for="s5"></label>
+    </div>
+  </div>
+
+  <!-- АКТУАЛЬНЫЕ АКЦИИ -->
+  <section class="actions">
+    <h2>Актуальные акции</h2>
+    <div class="action-list">
+      <a href="https://example.com/promo1" class="action-card">
+        <img src="images/product1.jpg" alt="Акция 1">
+        <h3>Скидка до 50%</h3>
+        <p>Только сегодня лучшие предложения!</p>
+      </a>
+      <a href="https://example.com/promo2" class="action-card">
+        <img src="images/product2.jpg" alt="Акция 2">
+        <h3>Новая коллекция</h3>
+        <p>Успейте приобрести свежие товары.</p>
+      </a>
+      <a href="https://example.com/promo3" class="action-card">
+        <img src="images/product3.jpg" alt="Акция 3">
+        <h3>Бесплатная доставка</h3>
+        <p>При заказе от 3000₽ по всей России.</p>
+      </a>
+      <a href="https://example.com/promo4" class="action-card">
+        <img src="images/product4.jpg" alt="Акция 4">
+        <h3>Подарки за покупки</h3>
+        <p>Каждому покупателю приятный бонус.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- БАННЕРЫ -->
+<section class="banners">
+  <div class="banner-row">
+    <a href="https://lunevshop.ru/bright" class="banner">
+      <img src="images/banner1.jpg" alt="Будь ярче с L-U-N-E-V">
+      <div class="banner-text">Будь ярче с L-U-N-E-V</div>
+    </a>
+
+    <a href="https://lunevshop.ru/discover" class="banner">
+      <img src="images/banner1.jpg" alt="Открой новое — будь первым">
+      <div class="banner-text">Открой новое — будь первым</div>
+    </a>
+  </div>
+
+  <div class="banner-row banner-row-single">
+    <a href="https://lunevshop.ru/garage" class="banner funny-banner">
+      <img src="images/banner1.jpg" alt="Продам гараж. Дорого. Шутка!">
+      <div class="banner-text">Продам гараж. Дорого. Шутка!</div>
+    </a>
+  </div>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 L-U-N-E-V. Все права защищены.</p>
+    <div class="footer-contacts">
+      <p><strong>Контакты:</strong></p>
+      <p>Email: <a href="mailto:support@lunevshop.ru">support@lunevshop.ru</a></p>
+      <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

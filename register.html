@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Регистрация | L-U-N-E-V</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        <img src="images/logo1.png" alt="L-U-N-E-V" class="logo-img">
+      </a>
+    </div>
+    <div class="header-right">
+      <nav class="nav">
+        <a href="favorites.html">❤️ Избранное</a>
+        <a href="cart.html">🛒 Корзина</a>
+        <a href="login.html" class="login-link">👤 Войти</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="register-container">
+  <h2>Создать аккаунт</h2>
+  <form id="register-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="lastName">Фамилия *</label>
+        <input type="text" id="lastName" required>
+        <div class="form-error" id="lastNameError"></div>
+      </div>
+      <div class="form-group">
+        <label for="firstName">Имя *</label>
+        <input type="text" id="firstName" required>
+        <div class="form-error" id="firstNameError"></div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="middleName">Отчество</label>
+      <input type="text" id="middleName">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" placeholder="your@email.com" required>
+      <div class="form-error" id="emailError"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Телефон *</label>
+      <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+      <div class="form-error" id="phoneError"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="birthDate">Дата рождения</label>
+      <input type="date" id="birthDate">
+    </div>
+    
+    <div class="form-group">
+      <label for="gender">Пол</label>
+      <select id="gender">
+        <option value="">Не указано</option>
+        <option value="male">Мужской</option>
+        <option value="female">Женский</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Пароль *</label>
+      <input type="password" id="password" required minlength="6">
+      <div class="requirements">Минимум 6 символов</div>
+      <div class="form-error" id="passwordError"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="confirmPassword">Подтвердите пароль *</label>
+      <input type="password" id="confirmPassword" required>
+      <div class="form-error" id="confirmPasswordError"></div>
+    </div>
+    
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="newsletter" checked>
+        Получать уведомления о акциях и скидках
+      </label>
+    </div>
+    
+    <button type="submit" class="register-btn" id="submitBtn">
+      <span class="btn-text">Зарегистрироваться</span>
+      <span class="btn-loading">Регистрация...</span>
+    </button>
+  </form>
+  
+  <div class="auth-link">
+    Уже есть аккаунт? <a href="login.html">Войти</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>L-U-N-E-V</h3>
+      <p>Будущее Здесь и Сейчас. Самые современные технологии и гаджеты для вашего комфорта.</p>
+      <div class="social-links">
+        <a href="#"> VK</a>
+        <a href="#"> Telegram</a>
+        <a href="#"> Twitter</a>
+        <a href="#"> YouTube</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Магазин</h4>
+      <ul>
+        <li><a href="product-telephone.html">Смартфоны</a></li>
+        <li><a href="product-consoles.html">Игровые консоли</a></li>
+        <li><a href="product-headphone.html">Наушники</a></li>
+        <li><a href="product-port-consoles.html">Портативные консоли</a></li>
+        <li><a href="product-washmashine.html">Техника для дома</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Помощь</h4>
+      <ul>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Центр поддержки</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Доставка и оплата</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Гарантия и возврат</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Частые вопросы</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Контакты</h4>
+      <div class="contact-info">
+        <p>📧 Email: MR.ANDREW.BRAUNI@mamamia.ru</p>
+        <p>📞 Телефон: +7 (914) 123-4-88</p>
+        <p>🕒 Время работы: 9:00-21:00</p>
+        <p>📍 Адрес: г. Удомля, ул. Космонавтов, 42</p>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Безопасность</h4>
+      <div class="security-badges">
+        <div>🔒 Защита есть - клянусь</div>
+        <div>💳 Безопасная оплата - можно авшорами</div>
+        <div>📦 Гарантия доставки - 2 недели</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 L-U-N-E-V. Будущее Здесь и Сейчас. Все права защищены.</p>
+    <div class="footer-links">
+      <a href="https://avatars.mds.yandex.net/i?id=5958f7da9a5751737dc064ecf01deaf7_l-9220416-images-thumbs&n=13">Политика конфиденциальности</a>
+      <a href="https://i.ytimg.com/vi/NoAg0ucx-DI/hqdefault.jpg">Условия использования</a>
+      <a href="https://i.ytimg.com/vi/gedsONT744o/maxresdefault.jpg">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Система уведомлений
+function showNotification(message, type = 'error') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => notification.classList.add('show'), 100);
+  
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 5000);
+}
+
+// Показать ошибку поля
+function showFieldError(fieldId, message) {
+  const field = document.getElementById(fieldId);
+  const errorElement = document.getElementById(fieldId + 'Error');
+  
+  if (field && errorElement) {
+    field.classList.add('error');
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+  }
+}
+
+// Скрыть ошибку поля
+function hideFieldError(fieldId) {
+  const field = document.getElementById(fieldId);
+  const errorElement = document.getElementById(fieldId + 'Error');
+  
+  if (field && errorElement) {
+    field.classList.remove('error');
+    errorElement.style.display = 'none';
+  }
+}
+
+// Очистить все ошибки
+function clearAllErrors() {
+  const errorFields = ['lastName', 'firstName', 'email', 'phone', 'password', 'confirmPassword'];
+  errorFields.forEach(field => hideFieldError(field));
+}
+
+// Показать загрузку
+function showLoading() {
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const btnLoading = submitBtn.querySelector('.btn-loading');
+  
+  submitBtn.disabled = true;
+  btnText.style.display = 'none';
+  btnLoading.style.display = 'inline';
+}
+
+// Скрыть загрузку
+function hideLoading() {
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const btnLoading = submitBtn.querySelector('.btn-loading');
+  
+  submitBtn.disabled = false;
+  btnText.style.display = 'inline';
+  btnLoading.style.display = 'none';
+}
+// Обработка регистрации
+document.getElementById('register-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  // Очищаем предыдущие ошибки
+  clearAllErrors();
+  
+  // Получаем данные формы (ТОЛЬКО необходимые поля)
+  const userData = {
+    email: document.getElementById('email').value.trim().toLowerCase(),
+    password: document.getElementById('password').value,
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    newsletter: document.getElementById('newsletter').checked
+  };
+  
+  console.log('📤 Отправляемые данные:', userData);
+  
+  // Валидация (упрощенная)
+  let isValid = true;
+  
+  if (!userData.firstName) {
+    showFieldError('firstName', 'Пожалуйста, введите имя');
+    isValid = false;
+  }
+  
+  if (!userData.lastName) {
+    showFieldError('lastName', 'Пожалуйста, введите фамилию');
+    isValid = false;
+  }
+  
+  if (!userData.email) {
+    showFieldError('email', 'Пожалуйста, введите email');
+    isValid = false;
+  } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
+    showFieldError('email', 'Пожалуйста, введите корректный email');
+    isValid = false;
+  }
+  
+  if (!userData.phone) {
+    showFieldError('phone', 'Пожалуйста, введите телефон');
+    isValid = false;
+  }
+  
+  if (!userData.password) {
+    showFieldError('password', 'Пожалуйста, введите пароль');
+    isValid = false;
+  } else if (userData.password.length < 6) {
+    showFieldError('password', 'Пароль должен содержать минимум 6 символов');
+    isValid = false;
+  }
+  
+  if (userData.password !== document.getElementById('confirmPassword').value) {
+    showFieldError('confirmPassword', 'Пароли не совпадают');
+    isValid = false;
+  }
+  
+  if (!isValid) return;
+  
+  showLoading();
+  
+  try {
+    const response = await fetch('http://localhost:3000/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('currentUser', JSON.stringify(data.user));
+      
+      showNotification(`Регистрация успешна! Добро пожаловать, ${data.user.firstName}!`, 'success');
+      
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+    } else if (data.error) {
+      if (data.error.includes('уже существует')) {
+        showFieldError('email', 'Пользователь с таким email уже существует');
+      } else {
+        showNotification(data.error);
+      }
+    }
+  } catch (error) {
+    console.error('❌ Ошибка:', error);
+    showNotification('Ошибка подключения к серверу');
+  } finally {
+    hideLoading();
+  }
+});
+
+// Маска для телефона
+document.getElementById('phone').addEventListener('input', function(e) {
+  let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+  e.target.value = '+7' + (x[2] ? ' (' + x[2] : '') + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+});
+
+// Скрываем ошибки при вводе
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', function() {
+    hideFieldError(this.id);
+  });
+});
+
+// Функция для показа футера при прокрутке
+function initFooterVisibility() {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  
+  let footerShown = false;
+
+  function checkFooterVisibility() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Показываем футер когда пользователь прокрутил до нижней части страницы
+    if (scrollPosition >= documentHeight - 100 && !footerShown) {
+      footer.classList.add('visible', 'slide-up');
+      footerShown = true;
+    } else if (scrollPosition < documentHeight - 300 && footerShown) {
+      footer.classList.remove('visible', 'slide-up');
+      footerShown = false;
+    }
+  }
+
+  window.addEventListener('scroll', checkFooterVisibility);
+  window.addEventListener('resize', checkFooterVisibility);
+  
+  // Проверяем при загрузке
+  setTimeout(checkFooterVisibility, 100);
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', initFooterVisibility);
+</script>
+</body>
+</html>

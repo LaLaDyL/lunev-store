@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L-U-N-E-V | Смартфоны</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        <img src="images/logo1.png" alt="L-U-N-E-V" class="logo-img">
+      </a>
+    </div>
+
+    <div class="header-right">
+      <nav class="nav">
+        <a href="favorites.html">❤️ Избранное</a>
+        <a href="cart.html">🛒 Корзина</a>
+        <a href="login.html" class="login-link">👤 Войти</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="actions">
+  <h2>Актуальные предложения</h2>
+  <div class="action-list">
+    <a href="buy.html?id=6" class="action-card">
+      <img src="products/consoles/console1.jpg" alt="Акция 1">
+      <h3>PlayStation 5</h3>
+      <p>Суперскоростной SSD, 4K графика, поддержка HDR<br>от 60 000 ₽</p>
+    </a>
+
+    <a href="buy.html?id=7" class="action-card">
+      <img src="products/consoles/console2.jpg" alt="Акция 2">
+      <h3>PlayStation 3</h3>
+      <p>Старушка ещё может, 720p, поддержка Blu-ray<br>от 7 000 ₽</p>
+    </a>
+
+    <a href="buy.html?id=8" class="action-card">
+      <img src="products/consoles/console3.jpg" alt="Акция 3">
+      <h3>Xbox Series X</h3>
+      <p>4K гейминг, 12 терафлопс, быстрый SSD<br>от 55 000 ₽</p>
+    </a>
+
+    <a href="buy.html?id=9" class="action-card">
+      <img src="products/consoles/console4.jpg" alt="Акция 4">
+      <h3>Xbox Series S</h3>
+      <p>Компактная консоль, 1440p, оптимизированные игры<br>от 35 000 ₽</p>
+    </a>
+
+    <a href="buy.html?id=10" class="action-card">
+      <img src="products/consoles/console5.jpg" alt="Акция 5">
+      <h3>PS5 Digital Edition</h3>
+      <p>Без дисковода, быстрый SSD, поддержка 4K<br>от 55 000 ₽</p>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>L-U-N-E-V</h3>
+      <p>Будущее Здесь и Сейчас. Самые современные технологии и гаджеты для вашего комфорта.</p>
+      <div class="social-links">
+        <a href="#">📘 VK</a>
+        <a href="#">📷 Instagram</a>
+        <a href="#">🐦 Twitter</a>
+        <a href="#">📹 YouTube</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Магазин</h4>
+      <ul>
+        <li><a href="product-telephone.html">Смартфоны</a></li>
+        <li><a href="product-consoles.html">Игровые консоли</a></li>
+        <li><a href="product-headphone.html">Наушники</a></li>
+        <li><a href="product-port-consoles.html">Портативные консоли</a></li>
+        <li><a href="product-washmashine.html">Техника для дома</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Помощь</h4>
+      <ul>
+        <li><a href="help.html">Центр поддержки</a></li>
+        <li><a href="delivery.html">Доставка и оплата</a></li>
+        <li><a href="warranty.html">Гарантия и возврат</a></li>
+        <li><a href="faq.html">Частые вопросы</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Контакты</h4>
+      <div class="contact-info">
+        <p>📧 Email: MR.ANDREW.BRAUNI@mamamia.ru</p>
+        <p>📞 Телефон: +7 (914) 123-4-88</p>
+        <p>🕒 Время работы: 9:00-21:00</p>
+        <p>📍 Адрес: г. Москва, ул. Технологическая, 42</p>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Безопасность</h4>
+      <div class="security-badges">
+        <div>🔒 SSL защита</div>
+        <div>💳 Безопасная оплата</div>
+        <div>📦 Гарантия доставки</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 L-U-N-E-V. Будущее Здесь и Сейчас. Все права защищены.</p>
+    <div class="footer-links">
+      <a href="privacy.html">Политика конфиденциальности</a>
+      <a href="terms.html">Условия использования</a>
+      <a href="cookies.html">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/header.js"></script>
+<script>
+// Функция для показа футера при прокрутке
+function initFooterVisibility() {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  
+  let footerShown = false;
+
+  function checkFooterVisibility() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // Показываем футер когда пользователь прокрутил до нижней части страницы
+    if (scrollPosition >= documentHeight - 100 && !footerShown) {
+      footer.classList.add('visible', 'slide-up');
+      footerShown = true;
+    } else if (scrollPosition < documentHeight - 300 && footerShown) {
+      footer.classList.remove('visible', 'slide-up');
+      footerShown = false;
+    }
+  }
+
+  window.addEventListener('scroll', checkFooterVisibility);
+  window.addEventListener('resize', checkFooterVisibility);
+  
+  // Проверяем при загрузке
+  setTimeout(checkFooterVisibility, 100);
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', initFooterVisibility);
+</script>
+</body>
+</html>

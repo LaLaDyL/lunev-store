@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина | L-U-N-E-V</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        <img src="images/logo1.png" alt="L-U-N-E-V" class="logo-img">
+      </a>
+    </div>
+
+    <div class="header-right">
+      <nav class="nav">
+        <a href="favorites.html">❤️ Избранное</a>
+        <a href="cart.html" class="active">🛒 Корзина</a>
+        <a href="login.html" class="login-link">👤 Войти</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="main-content">
+  <section class="cart-section">
+    <h2>🛒 Корзина 🛒</h2>
+
+    <div class="cart-container" id="cart-container">
+      <!-- Товары подгрузятся через JS -->
+    </div>
+
+    <!-- ИТОГО -->
+    <div class="cart-summary">
+      <p><strong>Итого:</strong> <span class="total-price">0 ₽</span></p>
+      <button class="checkout-btn">Оформить заказ</button>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>L-U-N-E-V</h3>
+      <p>Будущее Здесь и Сейчас. Самые современные технологии и гаджеты для вашего комфорта.</p>
+      <div class="social-links">
+        <a href="#"> VK</a>
+        <a href="#"> Telegram</a>
+        <a href="#"> Twitter</a>
+        <a href="#"> YouTube</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Магазин</h4>
+      <ul>
+        <li><a href="product-telephone.html">Смартфоны</a></li>
+        <li><a href="product-consoles.html">Игровые консоли</a></li>
+        <li><a href="product-headphone.html">Наушники</a></li>
+        <li><a href="product-port-consoles.html">Портативные консоли</a></li>
+        <li><a href="product-washmashine.html">Техника для дома</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Помощь</h4>
+      <ul>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Центр поддержки</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Доставка и оплата</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Гарантия и возврат</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Частые вопросы</a></li>
+        <li><a href="https://i.ytimg.com/vi/yCe2NeTzB8A/hqdefault.jpg">Контакты</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Контакты</h4>
+      <div class="contact-info">
+        <p>📧 Email: MR.ANDREW.BRAUNI@mamamia.ru</p>
+        <p>📞 Телефон: +7 (914) 123-4-88</p>
+        <p>🕒 Время работы: 9:00-21:00</p>
+        <p>📍 Адрес: г. Удомля, ул. Космонавтов, 42</p>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Безопасность</h4>
+      <div class="security-badges">
+        <div>🔒 Защита есть - клянусь</div>
+        <div>💳 Безопасная оплата - можно авшорами</div>
+        <div>📦 Гарантия доставки - 2 недели</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 L-U-N-E-V. Будущее Здесь и Сейчас. Все права защищены.</p>
+    <div class="footer-links">
+      <a href="https://avatars.mds.yandex.net/i?id=5958f7da9a5751737dc064ecf01deaf7_l-9220416-images-thumbs&n=13">Политика конфиденциальности</a>
+      <a href="https://i.ytimg.com/vi/NoAg0ucx-DI/hqdefault.jpg">Условия использования</a>
+      <a href="https://i.ytimg.com/vi/gedsONT744o/maxresdefault.jpg">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cartContainer = document.querySelector('.cart-container');
+const totalPriceEl = document.querySelector('.total-price');
+const checkoutBtn = document.querySelector('.checkout-btn');
+
+// Получаем текущего пользователя
+const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+
+// Если пользователь не авторизован
+if (!currentUser.id) {
+  window.location.href = 'login.html';
+}
+
+// Загрузка корзины с сервера
+async function loadCart() {
+  try {
+    console.log('🔄 Загрузка корзины...');
+    const response = await fetch(`http://localhost:3000/api/cart/${currentUser.id}`);
+    const data = await response.json();
+    
+    console.log('📦 Данные корзины:', data);
+    
+    if (data.status === 'success') {
+      renderCart(data.cart);
+    } else {
+      cartContainer.innerHTML = '<p>Ошибка загрузки корзины</p>';
+      console.error('❌ Ошибка загрузки корзины:', data.error);
+    }
+  } catch (error) {
+    console.error('❌ Ошибка загрузки:', error);
+    cartContainer.innerHTML = '<p>Ошибка подключения к серверу</p>';
+  }
+}
+
+// Отрисовка корзины
+function renderCart(cart) {
+  console.log('🎨 Отрисовка корзины, товаров:', cart.length);
+  
+  if (cart.length === 0) {
+    cartContainer.innerHTML = '<p>Корзина пуста</p>';
+    totalPriceEl.textContent = '0 ₽';
+    return;
+  }
+
+  let total = 0;
+  cartContainer.innerHTML = cart.map(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    
+    const productId = item.product_id;
+    const selectedMemory = item.selected_memory || '';
+    
+    console.log('📋 Товар в корзине:', {
+      id: productId,
+      name: item.name,
+      memory: selectedMemory,
+      quantity: item.quantity
+    });
+    
+    return `
+      <div class="cart-item" data-id="${productId}" data-memory="${selectedMemory}">
+        <img src="${item.image_url}" alt="${item.name}">
+        <div class="cart-item-info">
+          <h3>${item.name}</h3>
+          ${selectedMemory ? `<p>Память: ${selectedMemory}</p>` : ''}
+          <div class="cart-item-controls">
+            <div class="quantity">
+              <button class="qty-btn minus">−</button>
+              <span class="qty-value">${item.quantity}</span>
+              <button class="qty-btn plus">+</button>
+            </div>
+            <p class="price" data-unit-price="${item.price}">${itemTotal.toLocaleString('ru-RU')} ₽</p>
+          </div>
+        </div>
+        <button class="remove-item">✕</button>
+      </div>
+    `;
+  }).join('');
+
+  totalPriceEl.textContent = total.toLocaleString('ru-RU') + ' ₽';
+  
+  // Добавляем обработчики событий
+  addCartEventListeners();
+  
+  console.log('✅ Корзина отрисована');
+}
+
+// Добавление обработчиков событий
+function addCartEventListeners() {
+  console.log('🎯 Добавление обработчиков событий...');
+  
+  // Обработчики для кнопок +/-
+  document.querySelectorAll('.qty-btn.plus').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      const itemEl = e.target.closest('.cart-item');
+      const productId = itemEl.dataset.id;
+      const selectedMemory = itemEl.dataset.memory;
+      
+      console.log('➕ Нажата кнопка +:', { productId, selectedMemory });
+      
+      await updateCartItem(productId, selectedMemory, 1);
+    });
+  });
+
+  document.querySelectorAll('.qty-btn.minus').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      const itemEl = e.target.closest('.cart-item');
+      const productId = itemEl.dataset.id;
+      const selectedMemory = itemEl.dataset.memory;
+      const currentQty = parseInt(itemEl.querySelector('.qty-value').textContent);
+      
+      console.log('➖ Нажата кнопка -:', { productId, selectedMemory, currentQty });
+      
+      if (currentQty > 1) {
+        await updateCartItem(productId, selectedMemory, -1);
+      }
+    });
+  });
+
+  // Обработчики для удаления
+  document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      const itemEl = e.target.closest('.cart-item');
+      const productId = itemEl.dataset.id;
+      const selectedMemory = itemEl.dataset.memory;
+      
+      console.log('🗑️ Нажата кнопка удаления:', { productId, selectedMemory });
+      
+      await removeCartItem(productId, selectedMemory);
+    });
+  });
+  
+  console.log('✅ Обработчики добавлены');
+}
+
+// Обновление количества товара
+async function updateCartItem(productId, selectedMemory, change) {
+  try {
+    console.log('🔄 Обновление товара:', {
+      productId: productId,
+      selectedMemory: selectedMemory,
+      change: change
+    });
+    
+    // Находим текущий элемент и получаем текущее количество
+    const itemEl = document.querySelector(`[data-id="${productId}"][data-memory="${selectedMemory}"]`);
+    if (!itemEl) {
+      console.error('❌ Элемент корзины не найден');
+      return;
+    }
+    
+    const currentQty = parseInt(itemEl.querySelector('.qty-value').textContent);
+    const newQuantity = currentQty + change;
+    
+    // Если новое количество меньше 1, удаляем товар
+    if (newQuantity < 1) {
+      await removeCartItem(productId, selectedMemory);
+      return;
+    }
+    
+    console.log('📊 Текущее количество:', currentQty, 'Новое:', newQuantity);
+    
+    // Отправляем запрос на обновление
+    const response = await fetch('http://localhost:3000/api/cart/update', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId: currentUser.id,
+        productId: parseInt(productId),
+        quantity: newQuantity,
+        selectedMemory: selectedMemory
+      })
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      console.log('✅ Корзина обновлена на сервере');
+      
+      // ОБНОВЛЯЕМ ОТОБРАЖЕНИЕ БЕЗ ПЕРЕЗАГРУЗКИ
+      const qtyValue = itemEl.querySelector('.qty-value');
+      const priceElement = itemEl.querySelector('.price');
+      
+      // Обновляем количество
+      qtyValue.textContent = newQuantity;
+      
+      // Получаем цену за единицу
+      let itemPrice;
+      if (priceElement.dataset.unitPrice) {
+        itemPrice = parseFloat(priceElement.dataset.unitPrice);
+      } else {
+        const currentTotal = parseFloat(priceElement.textContent.replace(/[^\d,]/g, '').replace(',', '.'));
+        itemPrice = currentTotal / currentQty;
+        priceElement.dataset.unitPrice = itemPrice;
+      }
+      
+      // Вычисляем новую общую цену для этого товара
+      const newItemTotal = itemPrice * newQuantity;
+      priceElement.textContent = newItemTotal.toLocaleString('ru-RU') + ' ₽';
+      
+      console.log('✅ Отображение обновлено. Цена за единицу:', itemPrice, 'Новая общая:', newItemTotal);
+      
+      // Пересчитываем общую сумму корзины
+      updateTotalPrice();
+    } else {
+      console.error('❌ Ошибка обновления корзины:', data.error);
+    }
+    
+  } catch (error) {
+    console.error('❌ Ошибка обновления:', error);
+  }
+}
+
+// Удаление товара из корзины
+async function removeCartItem(productId, selectedMemory) {
+  try {
+    console.log('🗑️ Удаление товара:', { 
+      userId: currentUser.id,
+      productId: productId, 
+      selectedMemory: selectedMemory 
+    });
+    
+    const response = await fetch('http://localhost:3000/api/cart/remove', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId: currentUser.id,
+        productId: parseInt(productId),
+        selectedMemory: selectedMemory
+      })
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      console.log('✅ Товар удален из корзины');
+      
+      // УДАЛЯЕМ ЭЛЕМЕНТ СРАЗУ БЕЗ ПЕРЕЗАГРУЗКИ
+      const itemElement = document.querySelector(`[data-id="${productId}"][data-memory="${selectedMemory}"]`);
+      if (itemElement) {
+        itemElement.remove();
+        console.log('✅ Элемент удален из DOM');
+      }
+      
+      // Пересчитываем общую сумму
+      updateTotalPrice();
+      
+      // Если корзина пуста, показываем сообщение
+      if (document.querySelectorAll('.cart-item').length === 0) {
+        cartContainer.innerHTML = '<p>Корзина пуста</p>';
+        totalPriceEl.textContent = '0 ₽';
+      }
+    } else {
+      console.error('❌ Ошибка удаления товара:', data.error);
+    }
+    
+  } catch (error) {
+    console.error('❌ Ошибка удаления:', error);
+  }
+}
+
+// Пересчет общей суммы после изменений
+function updateTotalPrice() {
+  let total = 0;
+  
+  document.querySelectorAll('.cart-item').forEach(item => {
+    const priceText = item.querySelector('.price').textContent;
+    const price = parseFloat(priceText.replace(/[^\d,]/g, '').replace(',', '.'));
+    total += price;
+  });
+  
+  totalPriceEl.textContent = total.toLocaleString('ru-RU') + ' ₽';
+  console.log('💰 Общая сумма пересчитана:', total);
+}
+
+// Оформление заказа
+checkoutBtn.addEventListener('click', () => {
+  console.log('🚀 Функция оформления заказа будет реализована позже');
+});
+
+// Инициализация корзины
+document.addEventListener('DOMContentLoaded', loadCart);
+
+// Функция для показа футера при прокрутке
+function initFooterVisibility() {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+  
+  let footerShown = false;
+
+  function checkFooterVisibility() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    if (scrollPosition >= documentHeight - 100 && !footerShown) {
+      footer.classList.add('visible', 'slide-up');
+      footerShown = true;
+    } else if (scrollPosition < documentHeight - 300 && footerShown) {
+      footer.classList.remove('visible', 'slide-up');
+      footerShown = false;
+    }
+  }
+
+  window.addEventListener('scroll', checkFooterVisibility);
+  window.addEventListener('resize', checkFooterVisibility);
+  
+  setTimeout(checkFooterVisibility, 100);
+}
+
+document.addEventListener('DOMContentLoaded', initFooterVisibility);
+</script>
+<script src="js/header.js"></script>
+</body>
+</html>

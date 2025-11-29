@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог | L-U-N-E-V</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo"><a href="index.html">L-U-N-E-V</a></div>
+  <div class="header-right">
+    <div class="search-bar"><input type="text" placeholder="Найдите товар..."></div>
+    <nav class="nav">
+      <a href="favorites.html">★ Избранное</a>
+      <a href="cart.html">🛒 Корзина</a>
+      <a href="login.html">👤 Войти</a>
+    </nav>
+  </div>
+</header>
+
+<section class="categories">
+  <h2>Категории товаров</h2>
+  <div class="grid">
+    <div class="category-card"><img src="https://via.placeholder.com/180x180?text=Смартфоны" alt="Смартфоны"><p>Смартфоны</p></div>
+    <div class="category-card"><img src="https://via.placeholder.com/180x180?text=Ноутбуки" alt="Ноутбуки"><p>Ноутбуки</p></div>
+    <div class="category-card"><img src="https://via.placeholder.com/180x180?text=Телевизоры" alt="Телевизоры"><p>Телевизоры</p></div>
+    <div class="category-card"><img src="https://via.placeholder.com/180x180?text=Консоли" alt="Консоли"><p>Игровые консоли</p></div>
+  </div>
+</section>
+
+<section class="products">
+  <h2>Популярные продукты</h2>
+  <div class="product-list">
+    <div class="product-card"><img src="https://via.placeholder.com/250x300?text=iPhone+14" alt="iPhone 14"><h3>iPhone 14</h3><p class="price">75 000 ₽</p></div>
+    <div class="product-card"><img src="https://via.placeholder.com/250x300?text=MacBook+Pro" alt="MacBook Pro"><h3>MacBook Pro</h3><p class="price">180 000 ₽</p></div>
+    <div class="product-card"><img src="https://via.placeholder.com/250x300?text=Samsung+TV" alt="Samsung TV"><h3>Samsung OLED TV</h3><p class="price">120 000 ₽</p></div>
+    <div class="product-card"><img src="https://via.placeholder.com/250x300?text=PlayStation+5" alt="PlayStation 5"><h3>PlayStation 5</h3><p class="price">50 000 ₽</p></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2025 L-U-N-E-V. Все права защищены.</p>
+  <div class="footer-contacts">
+    <p><strong>Контакты:</strong></p>
+    <p>Email: <a href="mailto:support@lunevshop.ru">support@lunevshop.ru</a></p>
+    <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
