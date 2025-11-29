@@ -6,6 +6,47 @@ const { query } = require('./config/database');
 const app = express();
 app.use(express.json());
 
+// Диагностика базы данных
+app.get('/api/debug-db', async (req, res) => {
+  try {
+    console.log('🔧 Проверка подключения к базе...');
+    
+    // Проверяем есть ли переменная окружения
+    const hasDbUrl = !!process.env.DATABASE_URL;
+    console.log('DATABASE_URL установлен:', hasDbUrl);
+    
+    if (!hasDbUrl) {
+      return res.json({
+        status: 'error',
+        message: 'DATABASE_URL не установлен',
+        details: 'Добавьте переменную DATABASE_URL в Environment Variables'
+      });
+    }
+    
+    // Пробуем подключиться
+    const result = await query('SELECT NOW() as time, version() as version');
+    
+    res.json({
+      status: 'success', 
+      message: 'База данных подключена!',
+      time: result.rows[0].time,
+      version: result.rows[0].version,
+      hasDatabaseUrl: true
+    });
+    
+  } catch (error) {
+    console.error('❌ Ошибка подключения к базе:', error);
+    
+    res.json({
+      status: 'error',
+      message: error.message,
+      hasDatabaseUrl: !!process.env.DATABASE_URL,
+      errorCode: error.code,
+      errorDetail: error.detail
+    });
+  }
+});
+
 // Раздача статических файлов из корня репозитория
 app.use(express.static('../'));
 
