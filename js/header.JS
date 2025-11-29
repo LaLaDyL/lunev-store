@@ -1,3 +1,4 @@
+const API_BASE = window.location.origin;
 // header.js - обновленная версия для работы с бэкендом
 document.addEventListener('DOMContentLoaded', async () => {
   const nav = document.querySelector('.nav');

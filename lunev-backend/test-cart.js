@@ -1,3 +1,4 @@
+const API_BASE = window.location.origin;
 const { query } = require('./config/database');
 
 async function testCart() {

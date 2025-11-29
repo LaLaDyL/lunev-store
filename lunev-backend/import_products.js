@@ -1,3 +1,4 @@
+const API_BASE = window.location.origin;
 const { query } = require('./config/database');
 const products = require('./products.json');
 

@@ -1,3 +1,4 @@
+const API_BASE = window.location.origin;
 const express = require('express');
 const path = require('path');
 const { query } = require('./config/database');

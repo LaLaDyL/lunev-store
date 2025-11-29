@@ -1,3 +1,4 @@
+const API_BASE = window.location.origin;
 // Корзина в localStorage
 class Cart {
     constructor() {
