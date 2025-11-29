@@ -501,7 +501,7 @@ app.get('/api/favorites/check/:userId/:productId', async (req, res) => {
   }
 });
 
-const PORT = 3000;
+//const PORT = 3000;
 app.listen(PORT, () => {
   console.log('🚀 ==================================');
   console.log('🚀 Сервер L-U-N-E-V запущен!');
