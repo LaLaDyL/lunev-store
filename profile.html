@@ -98,6 +98,7 @@
 </footer>
 
 <script>
+  const API_BASE = window.location.origin;
 // Проверяем авторизацию
 if (localStorage.getItem('loggedIn') !== 'true') {
   window.location.href = 'login.html';
