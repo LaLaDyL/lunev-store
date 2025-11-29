@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 
-// Раздача статических файлов с рабочего стола
-app.use(express.static('C:/Users/KATANA/Desktop/сайт 3'));
+// Раздача статических файлов из корня репозитория
+app.use(express.static('../'));
 
 // Разрешаем CORS
 app.use((req, res, next) => {
@@ -25,9 +25,8 @@ app.use((req, res, next) => {
 
 // Главная страница HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join('C:/Users/KATANA/Desktop/сайт 3/index.html'));
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
-
 // API информация
 app.get('/api', (req, res) => {
   res.json({ 
