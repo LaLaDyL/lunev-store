@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const { query } = require('./config/database');
-const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
@@ -27,6 +26,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
+
 // API информация
 app.get('/api', (req, res) => {
   res.json({ 
@@ -90,9 +90,7 @@ app.get('/api/products/:id', async (req, res) => {
   }
 });
 
-
-// В регистрации
-// В регистрации
+// Упрощенная регистрация (только основные поля)
 app.post('/api/register', async (req, res) => {
   try {
     const { 
@@ -100,15 +98,12 @@ app.post('/api/register', async (req, res) => {
       password, 
       firstName, 
       lastName, 
-      phone, 
-      middleName,  // добавлено
-      birthDate,   // добавлено
-      gender,      // добавлено
-      newsletter   // добавлено
+      phone,
+      newsletter = false
     } = req.body;
     
     console.log('📝 Регистрация - полученные данные:', { 
-      email, firstName, lastName, middleName, phone, birthDate, gender, newsletter 
+      email, firstName, lastName, phone, newsletter
     });
     
     // Проверяем есть ли пользователь
@@ -117,13 +112,13 @@ app.post('/api/register', async (req, res) => {
       return res.status(400).json({ error: 'Пользователь уже существует' });
     }
     
-    // Создаем пользователя
+    // Создаем пользователя (только основные поля)
     const result = await query(
       `INSERT INTO users 
-       (email, password, first_name, last_name, middle_name, phone, birth_date, gender, newsletter) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
-       RETURNING id, email, first_name, last_name, middle_name, phone, birth_date, gender, newsletter`,
-      [email, password, firstName, lastName, middleName, phone, birthDate, gender, newsletter]
+       (email, password, first_name, last_name, phone, newsletter) 
+       VALUES ($1, $2, $3, $4, $5, $6) 
+       RETURNING id, email, first_name, last_name, phone, newsletter`,
+      [email, password, firstName, lastName, phone, newsletter]
     );
     
     const user = result.rows[0];
@@ -136,10 +131,7 @@ app.post('/api/register', async (req, res) => {
         email: user.email,
         firstName: user.first_name,
         lastName: user.last_name,
-        middleName: user.middle_name,
         phone: user.phone,
-        birthDate: user.birth_date,
-        gender: user.gender,
         newsletter: user.newsletter
       }
     });
@@ -178,7 +170,6 @@ app.post('/api/login', async (req, res) => {
 
 // ================== КОРЗИНА ==================
 
-// В запросе корзины (строка ~175)
 // Получить избранное пользователя
 app.get('/api/favorites/:userId', async (req, res) => {
   try {
@@ -198,7 +189,6 @@ app.get('/api/favorites/:userId', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
 
 // Добавить товар в корзину
 app.post('/api/cart/add', async (req, res) => {
@@ -245,6 +235,7 @@ app.post('/api/cart/add', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Debug эндпоинт для проверки корзины
 app.get('/api/debug/cart', async (req, res) => {
   try {
@@ -270,6 +261,8 @@ app.get('/api/debug/cart', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// Получить корзину пользователя
 app.get('/api/cart/:userId', async (req, res) => {
   try {
     const { userId } = req.params;
@@ -288,11 +281,12 @@ app.get('/api/cart/:userId', async (req, res) => {
       status: 'success',
       cart: result.rows
     });
-  } catch (error) {а
+  } catch (error) {
     console.error('❌ Ошибка загрузки корзины:', error);
     res.status(500).json({ error: error.message });
   }
 });
+
 // Обновить количество товара в корзине
 app.put('/api/cart/update', async (req, res) => {
   try {
@@ -326,8 +320,7 @@ app.put('/api/cart/update', async (req, res) => {
   }
 });
 
-
-// Получить полную информацию о пользователе
+// Получить упрощенную информацию о пользователе
 app.get('/api/user/profile', async (req, res) => {
   try {
     console.log('👤 Запрос профиля, query:', req.query);
@@ -342,9 +335,7 @@ app.get('/api/user/profile', async (req, res) => {
     console.log('🔍 Ищем пользователя ID:', userId);
     
     const result = await query(`
-      SELECT id, email, first_name, last_name, phone, 
-             birth_date, gender, newsletter,
-             registration_date, last_login
+      SELECT id, email, first_name, last_name, phone, newsletter
       FROM users 
       WHERE id = $1
     `, [parseInt(userId)]);
@@ -500,7 +491,7 @@ app.get('/api/favorites/check/:userId/:productId', async (req, res) => {
   }
 });
 
-//const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('🚀 ==================================');
   console.log('🚀 Сервер L-U-N-E-V запущен!');
